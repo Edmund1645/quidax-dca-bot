@@ -8,9 +8,11 @@ import config from './config';
 import QuidaxService from './src/services/Quidax';
 import MailgunService from './src/services/Mailgun';
 
+import { IOrder } from './src/@types/Order';
+
 const mailer = new MailgunService(config.mailgun_scret, config.mailgun_domain);
 
-async function placeOrder(order: typeof config.orders[0]) {
+async function placeOrder(order: IOrder) {
   try {
     const { data: response } = await QuidaxService.instantBuy(order.asset, order.currency, order.amount, order.quantity);
 

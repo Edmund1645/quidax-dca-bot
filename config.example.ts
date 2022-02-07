@@ -1,3 +1,5 @@
+import { IOrder } from './src/@types/Order';
+
 const config = {
   quidax_secret: process.env.QUIDAX_API_SECRET as string, // required
   mailgun_scret: process.env.MAILGUN_SECRET as string, // optional, if not provided, mailgun will not be used to send notifications
@@ -11,15 +13,17 @@ const config = {
       asset: 'eth', // what to buy, accepted: btc, ltc, eth, xrp, usdt, dash
       currency: 'ngn', // what to buy with, accepted: ngn, usdt, ghs
       amount: '500', // buy 500 ngn worth of eth
+      quantity: '', // intentionally left blank, since amount is set
       schedule: '', // buy immediately
     },
     {
       asset: 'btc',
       currency: 'usdt',
+      amount: '', // intentionally left blank, since quantity is set
       quantity: '0.0001', // buy 0.0001 btc with usdt
       schedule: '00 11 * * *', // buy at 11am every day
     },
-  ],
+  ] as IOrder[],
 };
 
 export default config;
