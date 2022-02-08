@@ -48,9 +48,13 @@ async function runBot() {
     }
 
     if (amount) {
-      console.log(colors.yellow(`Setting up CRON to buy ${amount} ${currency} worth of ${asset} ${schedule ? cronstrue.toString(schedule) : 'Immediately'}`));
+      console.log(
+        colors.yellow(`Setting up CRON to buy ${amount} ${currency} worth of ${asset} ${schedule ? cronstrue.toString(schedule, { verbose: true }) : 'Immediately'}`)
+      );
     } else {
-      console.log(colors.yellow(`Setting up CRON to buy ${quantity} ${asset} with ${currency} ${schedule ? cronstrue.toString(schedule) : 'Immediately'}`));
+      console.log(
+        colors.yellow(`Setting up CRON to buy ${quantity} ${asset} with ${currency} ${schedule ? cronstrue.toString(schedule, { verbose: true }) : 'Immediately'}`)
+      );
     }
 
     if (!schedule) {
